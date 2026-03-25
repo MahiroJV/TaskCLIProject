@@ -64,7 +64,7 @@ if [ ! -d "$INSTALL_DIR/Project/src" ]; then
 fi
 
 for f in "taskCli.java" "task.java" "taskManager.java" "jsonStore.java"; do
-    if [ ! -f "$INSTALL_DIR/Project/src$f" ]; then
+    if [ ! -f "$INSTALL_DIR/Project/src/$f" ]; then
         error "Missing: src $f"
     fi
 done
