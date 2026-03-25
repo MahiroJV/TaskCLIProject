@@ -1,4 +1,3 @@
-# TaskCLIProject
 # Task Tracker CLI — Java Edition
 
 A command-line task manager built in **pure Java** (no external libraries).
