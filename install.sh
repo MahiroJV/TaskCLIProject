@@ -59,7 +59,7 @@ info "Found: $JAVA_VERSION"
 # ─────────────────────────────────────────────────────────────────
 info "Checking source files..."
 
-if [ ! -d "$INSTALL_DIR/src/package1" ]; then
+if [ ! -d "$INSTALL_DIR/src" ]; then
     error "src/package1/ not found. Run this script from the project root."
 fi
 
