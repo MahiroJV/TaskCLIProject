@@ -60,12 +60,12 @@ info "Found: $JAVA_VERSION"
 info "Checking source files..."
 
 if [ ! -d "$INSTALL_DIR/src" ]; then
-    error "src/package1/ not found. Run this script from the project root."
+    error "src not found. Run this script from the project root."
 fi
 
 for f in "taskCli.java" "task.java" "taskManager.java" "jsonStore.java"; do
-    if [ ! -f "$INSTALL_DIR/src/package1/$f" ]; then
-        error "Missing: src/package1/$f"
+    if [ ! -f "$INSTALL_DIR/src$f" ]; then
+        error "Missing: src $f"
     fi
 done
 
@@ -77,7 +77,7 @@ info "All source files found."
 info "Compiling Java files..."
 
 mkdir -p "$INSTALL_DIR/bin"
-javac -d "$INSTALL_DIR/bin" "$INSTALL_DIR/src/package1/"*.java
+javac -d "$INSTALL_DIR/bin" "$INSTALL_DIR/src"*.java
 
 if [ $? -ne 0 ]; then
     error "Compilation failed. Fix the errors above and try again."
