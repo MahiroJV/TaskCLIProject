@@ -127,6 +127,16 @@ else
     warning "Run locally instead: ./taskcli"
 fi
 
+mkdir -p "$HOME/Documents"
+
+# tasks.json yarat
+if [ ! -f "$HOME/Documents/tasks.json" ]; then
+    echo '{"tasks": []}' > "$HOME/Documents/tasks.json"
+    echo "tasks.json yaradıldı Documents qovluğunda."
+else
+    echo "tasks.json artıq mövcuddur."
+fi
+
 # ─────────────────────────────────────────────────────────────────
 #  DONE
 # ─────────────────────────────────────────────────────────────────
