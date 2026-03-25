@@ -77,7 +77,7 @@ info "All source files found."
 info "Compiling Java files..."
 
 mkdir -p "$INSTALL_DIR/bin"
-javac -d "$INSTALL_DIR/bin" "$INSTALL_DIR/Project/src"*.java
+javac -d "$INSTALL_DIR/bin" "$INSTALL_DIR/Project/src/"*.java
 
 if [ $? -ne 0 ]; then
     error "Compilation failed. Fix the errors above and try again."
