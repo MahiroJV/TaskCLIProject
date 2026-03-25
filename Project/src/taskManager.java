@@ -9,7 +9,14 @@ public class taskManager {
 
     public taskManager() {
         //this.store = new jsonStore("/home/koktail/Documents/GitHub/JavaLearning/TaskTrackerCLI/tasks.json");
-        this.store = new jsonStore("$HOME/Documents/tasks.json");
+        //this.store = new jsonStore("tasks.json");
+        String home = System.getProperty("user.home");
+        String filePath = home + "/.taskcli/tasks.json";
+
+        // Create the folder if it doesn't exist
+        new java.io.File(home + "/.taskcli").mkdirs();
+
+        this.store = new jsonStore(filePath);
     }
 
     // ─────────────────────────────────────────────────────────────────────

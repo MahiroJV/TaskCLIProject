@@ -34,7 +34,7 @@ fi
 # ─────────────────────────────────────────────
 if [ ! -d "$SCRIPT_DIR/bin" ]; then
     echo "Error: bin/ folder not found. Did you compile first?"
-    echo "Run: javac -d bin src/package1/*.java"
+    echo "Run: javac -d bin Project/src/*.java"
     exit 1
 fi
 
