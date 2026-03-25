@@ -28,27 +28,37 @@ Each file has **one responsibility** — this is called *Separation of Concerns*
 | `JsonStore.java` | Talk to the filesystem |
 
 ---
+## Installation
 
-## Setup & Compile
+First install Java
 
-You need **Java 11+** installed. Check with:
+🟠 Ubuntu / Debian (APT)
+
 ```bash
-java -version
-javac -version
+sudo apt update
+sudo apt install openjdk-25-jdk
+```
+🔵 Fedora (DNF)
+
+```bash
+sudo dnf install java-17-openjdk-devel
+```
+🟢 Arch Linux (Pacman)
+
+```bash
+sudo pacman -S jdk-openjdk
 ```
 
-Compile all source files:
+# Clone project
+
 ```bash
-# Option 1 — use the script
-chmod +x compile.sh
-./compile.sh
+git clone https://github.com/MahiroJV/TaskCLIProject.git
+cd TaskCLIProject
 
-# Option 2 — do it manually (same thing, more visible)
-mkdir -p out
-javac -d out src/*.java
+chmod +x install.sh
+./install.sh
+
 ```
-
-This creates `.class` files in `out/`. The `compile.sh` also generates a `./task-cli` wrapper so you don't have to type `java -cp out TaskCli` every time.
 
 ---
 
@@ -56,31 +66,31 @@ This creates `.class` files in `out/`. The `compile.sh` also generates a `./task
 
 ```bash
 # Add a task
-./task-cli add "Buy groceries"
+taskcli add "Buy groceries"
 # → Task added successfully (ID: 1)
 
-./task-cli add "Read Java book"
+taskcli add "Read Java book"
 # → Task added successfully (ID: 2)
 
 # List all tasks
-./task-cli list
+taskcli ls
 
 # Mark as in-progress
-./task-cli mark-in-progress 1
+taskcli mark-in-progress 1
 
 # Mark as done
-./task-cli mark-done 1
+taskcli mark-done 1
 
 # Update description
-./task-cli update 2 "Read Effective Java book"
+taskcli update 2 "Read Effective Java book"
 
 # Delete a task
-./task-cli delete 1
+taskcli delete 1
 
 # List by status
-./task-cli list todo
-./task-cli list in-progress
-./task-cli list done
+task-cli ls todo
+taskcli ls in-progress
+taskcli ls done
 ```
 
 ---
