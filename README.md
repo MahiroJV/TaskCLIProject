@@ -28,9 +28,9 @@ Each file has **one responsibility** — this is called *Separation of Concerns*
 | `JsonStore.java` | Talk to the filesystem |
 
 ---
-## Installation
+# Installation
 
-First install Java
+### First install Java
 
 🟠 Ubuntu / Debian (APT)
 
@@ -49,7 +49,7 @@ sudo dnf install java-17-openjdk-devel
 sudo pacman -S jdk-openjdk
 ```
 
-# Clone project
+### Clone project
 
 ```bash
 git clone https://github.com/MahiroJV/TaskCLIProject.git
