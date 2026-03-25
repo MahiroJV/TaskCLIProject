@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# ─────────────────────────────────────────────
+#  WHAT IS #!/bin/bash ?
+#  This is called a "shebang". It tells your terminal
+#  which program should run this file. Always the first line.
+# ─────────────────────────────────────────────
+
+# SCRIPT_DIR = the folder where THIS script file lives
+# No matter where you call it from, this always points
+# to the right place.
+#
+# Breaking it down:
+#   ${BASH_SOURCE[0]}  → path to this script file
+#   dirname "..."      → strips the filename, gives just the folder
+#   cd "..." && pwd    → jumps into that folder and prints the full path
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# ─────────────────────────────────────────────
+#  STEP 1: Check Java is installed
+#  "command -v java" returns nothing if java isn't found
+# ─────────────────────────────────────────────
+if ! command -v java &> /dev/null; then
+    echo "Error: Java is not installed or not in PATH."
+    echo "Install it with:"
+    echo "  Ubuntu/Debian → sudo apt install default-jdk"
+    echo "  Mac           → brew install openjdk"
+    exit 1
+fi
+
+# ─────────────────────────────────────────────
+#  STEP 2: Check the bin folder exists
+#  (means the project has been compiled)
+# ─────────────────────────────────────────────
+if [ ! -d "$SCRIPT_DIR/bin" ]; then
+    echo "Error: bin/ folder not found. Did you compile first?"
+    echo "Run: javac -d bin src/package1/*.java"
+    exit 1
+fi
+
+# ─────────────────────────────────────────────
+#  STEP 3: If no arguments given, show help
+#
+#  $# = number of arguments the user typed
+#  Example: taskcli add "Buy milk"  →  $# is 2
+# ─────────────────────────────────────────────
+if [ $# -eq 0 ]; then
+    echo ""
+    echo "=== Task Tracker CLI ==="
+    echo ""
+    echo "Usage:"
+    echo "  taskcli add \"<description>\"         Add a new task"
+    echo "  taskcli update <id> \"<description>\" Update a task"
+    echo "  taskcli delete <id>                  Delete a task"
+    echo "  taskcli mark-in-progress <id>        Mark as in-progress"
+    echo "  taskcli mark-done <id>               Mark as done"
+    echo "  taskcli list                         List all tasks"
+    echo "  taskcli list todo                    List todo tasks"
+    echo "  taskcli list in-progress             List in-progress tasks"
+    echo "  taskcli list done                    List done tasks"
+    echo ""
+    exit 0
+fi
+
+# ─────────────────────────────────────────────
+#  STEP 4: Run the Java program
+#
+#  -cp "$SCRIPT_DIR/bin"  → classpath: where to find .class files
+#  package1.taskCli       → the class to run (package1 is the folder)
+#  "$@"                   → pass ALL arguments the user typed to Java
+#                           e.g. add "Buy milk" gets forwarded as-is
+# ─────────────────────────────────────────────
+java -cp "$SCRIPT_DIR/bin" package1.taskCli "$@"
