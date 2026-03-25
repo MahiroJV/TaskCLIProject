@@ -8,7 +8,8 @@ public class taskManager {
     private final jsonStore store;
 
     public taskManager() {
-        this.store = new jsonStore("/home/koktail/Documents/GitHub/JavaLearning/TaskTrackerCLI/tasks.json");
+        //this.store = new jsonStore("/home/koktail/Documents/GitHub/JavaLearning/TaskTrackerCLI/tasks.json");
+        this.store = new jsonStore("$HOME/Documents/tasks.json");
     }
 
     // ─────────────────────────────────────────────────────────────────────
