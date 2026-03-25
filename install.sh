@@ -104,11 +104,11 @@ if ! command -v java &> /dev/null; then
 fi
 
 if [ \$# -eq 0 ]; then
-    java -cp "$BIN_PATH" Project.taskCli
+    java -cp "$BIN_PATH" taskCli
     exit 0
 fi
 
-java -cp "$BIN_PATH" Project.taskCli "\$@"
+java -cp "$BIN_PATH" taskCli "\$@"
 WEOF
 
 chmod +x "$WRAPPER"
