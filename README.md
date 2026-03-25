@@ -15,7 +15,6 @@ task-tracker/
 │   ├── TaskManager.java  ← Business logic. Add, update, delete, list tasks.
 │   └── JsonStore.java    ← File I/O. Reads/writes tasks.json manually.
 ├── out/                  ← Compiled .class files go here (created by javac)
-├── compile.sh            ← Convenience script to compile everything
 └── tasks.json            ← Created automatically when you add your first task
 ```
 
